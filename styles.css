@@ -1,0 +1,66 @@
+
+body {
+    background-color: #FFF4F4;
+}
+
+h1 {
+   text-align: center;
+}
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 23rem;
+    column-gap: 4px;
+    row-gap: 4px;
+    background-color: #606C5D;
+    padding: 4px 2px;
+    border-radius: 2%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.main-container .display {
+ width: 100%;
+ height: 4rem; 
+ border: solid red;  
+ padding: 10px;
+ display: flex;
+ flex-direction: column;
+ align-items: flex-end;
+ background-color: #FFF4F4;
+ border: solid #F1C376;
+ color: #FF0060;
+ border-radius: 2%;
+}
+
+#previous-operand {
+    color: rgba(235, 16, 16, 0.75);
+    font-size: 25px;
+}
+
+#current-operand {
+    color: rgba(235, 16, 16, 1);
+    font-size: 30px;
+}
+
+/* button container*/
+
+button {
+    background-color: transparent;
+    border: solid;
+    border-radius: 10%;
+    color: #F1C376;
+}
+.number, .operator, #decimal, #ac, #del {
+    width: 5rem;
+    height: 5rem;
+}
+#all-clear, #delete {
+    width: 7.5rem;
+    height: 5rem;
+}
+#equals {
+    height: 5rem;
+    width: 10rem;
+}
