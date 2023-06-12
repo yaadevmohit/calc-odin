@@ -5,6 +5,7 @@ const numberButtons = document.querySelectorAll('.number');
 const operatorButtons = document.querySelectorAll('.operator');
 const allClearButton = document.querySelector('#all-clear');
 const deleteButton = document.querySelector('#delete');
+const equalsButton = document.querySelector('#equals');
 
 let currentValue = '';
 let previousValue = '';
@@ -21,6 +22,7 @@ numberButtons.forEach(button => {
 allClearButton.addEventListener('click', () => {
     currentOperand.textContent = '';
     previousOperand.textContent = '';
+    operator =  '';
 }
 )
 
@@ -29,4 +31,39 @@ deleteButton.addEventListener('click', () => {
 }
 )
 
+operatorButtons.forEach(button => { 
+    button.addEventListener('click', () => {
+        if (currentOperand.textContent === '') return;
+        if (previousOperand.textContent !== '') {
+            currentValue = currentOperand.textContent;
+            calculate();
+        }
+        operator = button.textContent;
+        previousValue = currentOperand.textContent;
+        previousOperand.textContent = `${currentOperand.textContent} ${button.textContent}`;
+        currentOperand.textContent = '';
+    })
+}
+)
 
+equalsButton.addEventListener('click', () => {
+    if (currentOperand.textContent === '' || previousOperand.textContent.includes("=")) return;
+    currentValue = currentOperand.textContent;
+    calculate();
+    previousOperand.textContent += ` ${currentValue} =`;
+    operator = '';
+}
+)
+
+
+function calculate() {
+    if (operator === '+') {
+        currentOperand.textContent = parseFloat(previousValue) + parseFloat(currentValue);
+    } else if (operator === '-') {
+        currentOperand.textContent = parseFloat(previousValue) - parseFloat(currentValue);
+    } else if (operator === 'x') {
+        currentOperand.textContent = parseFloat(previousValue) * parseFloat(currentValue);
+    } else if (operator === '÷') {
+        currentOperand.textContent = parseFloat(previousValue) / parseFloat(currentValue);
+    }
+}
